@@ -7,6 +7,12 @@ It also install the necessary dependencies to make it work on some Raspberry Pi 
 
 This script also remove local printer drivers and auto-discovery of printers, as it is breaking the cups server on Raspberry Pi OS (error : **driver not found: 'Success'**)
 
+## Usage
+To use the script, download the script and run it with the following command:
+```bash
+sudo ./install.bash
+```
+
 ## Pi Bookworm (Pi 5)
 This script is for the Raspberry Pi OS Bookworm for Raspberry Pi 5.
 It uses the PrintNode client from Raspberry Pi OS Bullseye (Pi 4), and add the missing dependency package to make it work on pi 5.
