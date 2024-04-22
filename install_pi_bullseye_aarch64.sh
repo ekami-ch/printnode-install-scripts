@@ -1,6 +1,10 @@
 # PrintNode install setup for Raspberry pi 4 and Raspbian Bullseye aarch64
 ## Please run as root user
-
+# Check if this script is being run as root
+if [ "$(id -u)" != "0" ]; then
+    echo "This script must be run as root" 1>&2
+    exit 1
+fi
 # PrintNode Setup
 echo "Setting up PrintNode"
 ## Download PrintNode
@@ -72,19 +76,19 @@ sudo update-rc.d PrintNode defaults
 echo "PrintNode autostart done"
 echo "PrintNode Setup complete"
 
-# Setup Zebra printer
-echo "Setting up Zebra printer"
+# Setup printer drivers
+echo "Setting up printer drivers"
 ### Disabling the network search service
 echo "Disabling the network search service"
 systemctl stop cups-browsed.service
 systemctl disable cups-browsed.service
 echo "Network search service disabled"
 ### Deleting the existing drivers to avoid lpinfo -m timeout
-echo "Deleting the existing drivers to avoid lpinfo -m timeout"
+echo "Deleting the existing printer drivers to avoid lpinfo -m timeout"
 mdkir /usr/lib/cups/drivers/disable
 mv /usr/lib/cups/drivers/* disable/
 echo "Drivers deleted"
-echo "You can install Zebra drivers manually safely now."
+echo "You can install printer drivers manually safely now."
 
-echo "Setup complete. Please setup your Zebra printer and RustDesk manually before restarting your Raspberry Pi."
+echo "Setup complete. Please setup your printers and RustDesk manually before restarting your Raspberry Pi."
 
