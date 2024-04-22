@@ -90,8 +90,8 @@ systemctl disable cups-browsed.service
 echo "Network search service disabled"
 ### Deleting the existing drivers to avoid lpinfo -m timeout
 echo "Deleting the existing printer drivers to avoid lpinfo -m timeout"
-mkdir /usr/lib/cups/drivers/disable
-mv /usr/lib/cups/drivers/* disable/
+mkdir /usr/lib/cups/driver/disable
+mv /usr/lib/cups/driver/* disable/
 echo "Drivers deleted"
 echo "You can install printer drivers manually safely now."
 
