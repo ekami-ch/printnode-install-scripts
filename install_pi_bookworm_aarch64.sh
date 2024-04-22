@@ -27,8 +27,7 @@ tar xf PrintNode-4.27.8-pi-bullseye-aarch64.tar.gz -C /usr/local/PrintNode --str
 echo "PrintNode extracted"
 ## Setup the autostart 
 echo "Copying init.sh to /etc/init.d/PrintNode"
-cd /usr/local/PrintNode
-cp init.sh /etc/init.d/PrintNode
+cp /usr/local/PrintNode/init.sh /etc/init.d/PrintNode
 echo "init.sh copied to /etc/init.d/PrintNode"
 ## Ask the user input for a printnode api key. Show them the api key and ask if it is correct, if not ask them again.
 read -p "Enter your PrintNode API key: " api_key
@@ -91,7 +90,7 @@ systemctl disable cups-browsed.service
 echo "Network search service disabled"
 ### Deleting the existing drivers to avoid lpinfo -m timeout
 echo "Deleting the existing printer drivers to avoid lpinfo -m timeout"
-mdkir /usr/lib/cups/drivers/disable
+mkdir /usr/lib/cups/drivers/disable
 mv /usr/lib/cups/drivers/* disable/
 echo "Drivers deleted"
 echo "You can install printer drivers manually safely now."
