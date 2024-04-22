@@ -10,8 +10,24 @@ This script also remove local printer drivers and auto-discovery of printers, as
 ## Usage
 To use the script, download the script and run it with the following command:
 ```bash
-sudo ./install.bash
+sudo ./install.bash <architecture> <distribution> <api key>
 ```
+
+**Architecture possible values** : 
+- aarch64 
+- x86_64
+
+**Distribution possible values** :
+- pi-bullseye
+- pi-bookworm
+- ubuntu-22.04
+
+**Possible Combination** :
+- aarch64 pi-bullseye
+- aarch64 pi-bookworm
+- x86_64 ubuntu-22.04
+
+**API Key** : Your PrintNode API Key
 
 ## Pi Bookworm (Pi 5)
 This script is for the Raspberry Pi OS Bookworm for Raspberry Pi 5.
