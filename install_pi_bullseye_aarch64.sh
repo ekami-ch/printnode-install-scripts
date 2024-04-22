@@ -1,22 +1,21 @@
 # PrintNode install setup for Raspberry pi 4 and Raspbian Bullseye aarch64
 ## Please run as root user
 
-# Download PrintNode
+# PrintNode Setup
+echo "Setting up PrintNode"
+## Download PrintNode
 echo "Downloading PrintNode"
 wget https://dl.printnode.com/client/printnode/4.27.8/PrintNode-4.27.8-pi-bullseye-aarch64.tar.gz
 echo "PrintNode downloaded"
-
-# Create PrintNode directory in /usr/local
+## Create PrintNode directory in /usr/local
 echo "Creating PrintNode directory in /usr/local"
 mkdir /usr/local/PrintNode
 echo "/usr/local/PrintNode created"
-
-# Extract PrintNode in the PrintNode directory
+## Extract PrintNode in the PrintNode directory
 echo "Extracting PrintNode in the PrintNode directory"
 tar xf PrintNode-4.27.8-pi-bullseye-aarch64.tar.gz -C /usr/local/PrintNode --strip-components=1
 echo "PrintNode extracted"
-
-# Setup the autostart 
+## Setup the autostart 
 echo "Copying init.sh to /etc/init.d/PrintNode"
 cd /usr/local/PrintNode
 cp init.sh /etc/init.d/PrintNode
@@ -45,7 +44,7 @@ echo "Client key retrieved"
 echo "Removing quotes from the client key"
 client_key=$(echo $client_key | tr -d '"')
 echo "Client key quotes removed"
-# Use sed to replace the placeholder with the actual client key
+### Use sed to replace the placeholder with the actual client key
 echo "Adding key to /etc/init.d/PrintNode"
 sed -i 's@\(cmd="/usr/local/PrintNode/PrintNode --headless --shutdown-on-sigint --web-interface --remove-scales-support\).*@\1'" --client-key=$client_key\""'@' /etc/init.d/PrintNode
 echo "Key added to /etc/init.d/PrintNode"
@@ -86,13 +85,6 @@ mdkir /usr/lib/cups/drivers/disable
 mv /usr/lib/cups/drivers/* disable/
 echo "Drivers deleted"
 echo "You can install Zebra drivers manually safely now."
-
-# Installing RustDesk
-echo "Installing RustDesk"
-## Get the latest version aarch64 deb from github and install it
-wget https://github.com/rustdesk/rustdesk/releases/download/1.2.3-2/rustdesk-1.2.3-2-aarch64.deb
-dpkg -i rustdesk-1.2.3-2-aarch64.deb
-echo "RustDesk installed"
 
 echo "Setup complete. Please setup your Zebra printer and RustDesk manually before restarting your Raspberry Pi."
 

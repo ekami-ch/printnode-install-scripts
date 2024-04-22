@@ -3,9 +3,15 @@
 
 # PrintNode Setup
 echo "Setting up PrintNode"
+## Installing missing dependencies
+echo "Installing missing dependencies"
+echo "Installing libssl1.1"
+apt-get install libssl1.1
+echo "libssl1.1 installed"
+echo "Missing dependencies installed"
 ## Download PrintNode
 echo "Downloading PrintNode"
-wget https://dl.printnode.com/client/printnode/4.27.17/PrintNode-4.27.17-ubuntu-22.04-x86_64.tar.gz
+wget https://dl.printnode.com/client/printnode/4.27.8/PrintNode-4.27.8-pi-bullseye-aarch64.tar.gz
 echo "PrintNode downloaded"
 ## Create PrintNode directory in /usr/local
 echo "Creating PrintNode directory in /usr/local"
@@ -13,7 +19,7 @@ mkdir /usr/local/PrintNode
 echo "/usr/local/PrintNode created"
 ## Extract PrintNode in the PrintNode directory
 echo "Extracting PrintNode in the PrintNode directory"
-tar xf PrintNode-4.27.17-ubuntu-22.04-x86_64.tar.gz -C /usr/local/PrintNode --strip-components=1
+tar xf PrintNode-4.27.8-pi-bullseye-aarch64.tar.gz -C /usr/local/PrintNode --strip-components=1
 echo "PrintNode extracted"
 ## Setup the autostart 
 echo "Copying init.sh to /etc/init.d/PrintNode"
