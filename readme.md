@@ -11,11 +11,11 @@ This script also remove local printer drivers and auto-discovery of printers, as
 This script is for the Raspberry Pi OS Bookworm for Raspberry Pi 5.
 It uses the PrintNode client from Raspberry Pi OS Bullseye (Pi 4), and add the missing dependency package to make it work on pi 5.
 
-### Requirements (Pi 4 & 4B)
+### Requirements 
 - Hardware : Raspberry Pi 5
 - OS : Raspberry Pi OS Bookworm Aarch64
 
-## Pi Bullseye
+## Pi Bullseye (Pi 4 & 4B)
 This script is for the Raspberry Pi OS Bullseye for Raspberry Pi 4. 
 
 ### Requirements
