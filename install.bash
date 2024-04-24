@@ -94,7 +94,7 @@ fi
 echo "Setting up PrintNode"
 ## Specific dependencies for printnode_edition
 case $printnode_edition in
-    pi-bookworm,aarch64)
+    aarch64,pi-bookworm)
         ## Installing missing dependencies
         echo "Installing missing dependencies"
         echo "Installing libssl1.1"
