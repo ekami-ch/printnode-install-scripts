@@ -7,17 +7,18 @@ if [ "$(id -u)" != "0" ]; then
     exit 1
 fi
 
-# 3 arguments:
+# 4 arguments:
 #  - architecture
 #  - distribution
 #  - PrintNode API key
+#  - (Optional) RustDesk installation (yes/no)
 
 # Usage:
 # ./install.bash <architecture> <distribution> <PrintNode client key>
 echo "PrintNode Setup"
 echo "Checking the arguments"
 if [ $# -ne 3 ]; then
-  echo "Invalid number of arguments. Usage: ./install.bash <architecture> <distribution> <PrintNode API key>"
+  echo "Invalid number of arguments. Usage: ./install.bash <architecture> <distribution> <PrintNode API key> <RustDesk installation (optional yes/no)>"
   exit 1
 fi
 
@@ -27,6 +28,8 @@ architecture=$1
 distribution=$2
 # PrintNode API key
 api_key=$3
+# RustDesk installation (by default, no installation)
+rustdesk_installation=$4
 
 
 # Declare an associative array to hold the download links
@@ -175,9 +178,28 @@ mv /usr/lib/cups/driver/* /usr/lib/cups/disable/
 echo "Drivers deleted"
 echo "You can install printer drivers manually safely now."
 
+# Setup RustDesk
+if [ "$rustdesk_installation" == "yes" ]; then
+    echo "Setting up RustDesk"
+    ## Download RustDesk
+    echo "Downloading RustDesk"
+    wget https://github.com/rustdesk/rustdesk/releases/download/1.2.3-2/rustdesk-1.2.3-2-aarch64.deb
+    echo "RustDesk downloaded"
+    ## Install RustDesk
+    echo "Installing RustDesk for $architecture"
+    apt install -y ./rustdesk-1.2.3-2-${architecture}.deb
+    echo "RustDesk installed"
+    echo "RustDesk Setup complete"
+else
+    echo "Skipping RustDesk setup"
+fi
+
 # Cleanup
 echo "Cleaning up"
 rm /tmp/printnode.tar.gz
+if [ "$rustdesk_installation" == "yes" ]; then
+    rm rustdesk-1.2.3-2-${architecture}.deb
+fi
 echo "Cleanup complete"
 
 echo "Setup complete. Please setup your printers and RustDesk manually before restarting your Raspberry Pi."
