@@ -183,7 +183,7 @@ if [ "$rustdesk_installation" == "yes" ]; then
     echo "Setting up RustDesk"
     ## Download RustDesk
     echo "Downloading RustDesk"
-    wget https://github.com/rustdesk/rustdesk/releases/download/1.2.3-2/rustdesk-1.2.3-2-aarch64.deb
+    wget https://github.com/rustdesk/rustdesk/releases/download/1.2.3-2/rustdesk-1.2.3-2-${architecture}.deb
     echo "RustDesk downloaded"
     ## Install RustDesk
     echo "Installing RustDesk for $architecture"
