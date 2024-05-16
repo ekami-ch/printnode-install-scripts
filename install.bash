@@ -17,8 +17,10 @@ fi
 # ./install.bash <architecture> <distribution> <PrintNode client key>
 echo "PrintNode Setup"
 echo "Checking the arguments"
-if [ $# -ne 3 ]; then
-  echo "Invalid number of arguments. Usage: ./install.bash <architecture> <distribution> <PrintNode API key> <RustDesk installation (optional yes/no)>"
+
+# If < 3 arguments
+if [ $# -lt 3 ]; then
+  echo "Invalid number of arguments. Usage: ./install.bash <architecture> <distribution> <PrintNode API key> <RustDesk installation optionnal (yes/no)>"
   exit 1
 fi
 
