@@ -37,7 +37,7 @@ rustdesk_installation=$4
 # Declare an associative array to hold the download links
 declare -A printnode_links
 printnode_links["aarch64,pi-bullseye"]="https://dl.printnode.com/client/printnode/4.27.8/PrintNode-4.27.8-pi-bullseye-aarch64.tar.gz"
-printnode_links["aarch64,pi-bookworm"]="https://dl.printnode.com/client/printnode/4.27.8/PrintNode-4.27.8-pi-bullseye-aarch64.tar.gz"
+printnode_links["aarch64,pi-bookworm"]="https://dl.printnode.com/client/printnode/4.28.1/PrintNode-4.28.1-pi-bookworm-aarch64.tar.gz"
 printnode_links["x86_64,ubuntu-22.04"]="https://dl.printnode.com/client/printnode/4.27.17/PrintNode-4.27.17-ubuntu-22.04-x86_64.tar.gz"
 
 # Check if the provided architecture and distribution are valid
@@ -98,16 +98,16 @@ fi
 # PrintNode Setup
 echo "Setting up PrintNode"
 ## Specific dependencies for printnode_edition
-case $printnode_edition in
-    aarch64,pi-bookworm)
-        ## Installing missing dependencies
-        echo "Installing missing dependencies"
-        echo "Installing libssl1.1"
-        apt-get install -y libssl1.1
-        echo "libssl1.1 installed"
-        echo "Missing dependencies installed"
-        ;;
-esac
+# case $printnode_edition in
+#     aarch64,pi-bookworm)
+#         ## Installing missing dependencies
+#         echo "Installing missing dependencies"
+#         echo "Installing libssl1.1"
+#         apt-get install -y libssl1.1
+#         echo "libssl1.1 installed"
+#         echo "Missing dependencies installed"
+#         ;;
+# esac
 
 
 ## Download PrintNode
